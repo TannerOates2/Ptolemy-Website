@@ -1,0 +1,52 @@
+<!Doctype html>
+<html>
+<head>
+    <title>Ptolemy Data Visualizer</title>
+</head>
+<body>
+<h1>Ptolemy.io</h1>
+<h2>Graph Creator</h2>
+<h3>Upload Excel or CSV file</h3>
+<h4><b>Enter the two columns you want to graph</b></h4>
+{% block content%}
+        {% csrf_token %}
+        <form method="post" enctype="multipart/form-data">
+        <label for="column1">X Axis:</label>
+        <input type="text" name="column1" placeholder="Enter column 1">
+        <label for="column2">Y Axis:</label>
+        <input type="text" name="column2" placeholder="Enter column 2">
+        <br> <h4><b>Enter bar, histogram, scatter, and line</b></h4>
+        {% csrf_token %}
+        <form method="post" enctype="multipart/form-data">
+        <label for="graph type">Graph Type:</label>
+        <input type="text" name="graphtype" placeholder="Enter graph type">
+        <br> <h4><b>Enter Graph X axis label and Y axis label</b></h4>
+        {% csrf_token%}
+        <form method="post" enctype="multipart/form-data">
+        <label for="x label">X axis label:</label>
+        <input type="text" name="xlabel" placeholder="Enter x axis label">
+        <label for="y label">Y axis label:</label>
+        <input type="text" name="ylabel" placeholder="Enter y axis label">
+        <br> <h4><b>Enter Graph Title</b></h4>
+        {% csrf_token%}
+        <form method="post" enctype="multipart/form-data">
+        <label for="title name">Title Name:</label>
+        <input type="text" name="titlename" placeholder="Enter graph title">
+        {% csrf_token %}
+        <form method="post" enctype="multipart/form-data">
+        <h4><b>Upload Excel or CSV file</b></h4>
+        <input type="file" name="document"><button type="submit">Upload file</button>
+    </form>
+    {% if error %}
+      <p>{{ error }}</p>
+    {% endif %}
+    {% if url %}
+      <p>Uploaded file: <a href="{{ url }}">{{ url }}</a></p>
+     <!-- <p>Dataframe:</p>
+      <pre>{{ head }}</pre>-->
+      <p>Graph:</p><a href="{{ plot_url }}">Click here to download graph when done</a>
+      <img src="{{ plot_url }}">
+    {% endif %}
+{% endblock %}
+</body
+</html>

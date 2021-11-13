@@ -1,0 +1,96 @@
+<!Doctype html>
+<html>
+  <head>
+      <title>Ptolemy Data Visualizer</title>
+      {% load static %}
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+      <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  </head>
+  <body class = "bg-light">
+    <div class= "container">
+      <div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="media/bg/Plotemy-logos_black.png" width="172" height="172">
+        <h2>Ptolemy Data Visualizer</h2>
+        <p class="lead">A tool for visualizing data from datasets</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <h5 class="mb-3"> Enter the two columns you want to graph (case sensitive)</h5>
+        <div class="row g-3">
+          <div class="col-sm-6">
+            {% csrf_token%}
+            <form method="post" enctype="multipart/form-data">
+            <label for="column1"
+            class="form-label">X Axis:</label>
+            <input type="text" class="form-control" name="column1" placeholder="Enter column 1">
+          </div>
+          <div class="col-sm-6">
+            {% csrf_token%}
+            <form method="post" enctype="multipart/form-data">
+            <label for="column2"
+            class="form-label">Y Axis:</label>
+            <input type="text" class="form-control" name="column2" placeholder="Enter column 2">
+          </div>
+          <div class="col-12">
+            {% csrf_token%}
+            <form method="post" enctype="multipart/form-data">
+            <label for="titlename">
+            <br><class="form-label">Graph Title:</label>
+            <div class="input-group">
+              <input type="text" class="form-control" name="titlename" placeholder="Enter title name">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            {% csrf_token%}
+            <form method="post" enctype="multipart/form-data">
+            <label for="xlabel">
+            <br><class="form-label">X Axis Label:</label>
+            <input type="text" class="form-control" name="xlabel" placeholder="Enter x axis label">
+          </div>
+          <div class="col-sm-6">
+            {% csrf_token%}
+            <form method="post" enctype="multipart/form-data">
+            <label for="ylabel">
+            <br><class="form-label">Y Axis Label:</label>
+            <input type="text" class="form-control" name="ylabel" placeholder="Enter y axis label">
+          </div>
+          <div class="col-sm-12">
+            {% csrf_token%}
+            <form method="post" enctype="multipart/form-data">
+            <label for="graphtype">
+            <br><class="form-label">Graph Type:</label>
+            <select class="form-control" name="graphtype">
+              <option value="bar">Bar Graph</option>
+              <option value="line">Line Graph</option>
+              <option value="scatter">Scatter Plot</option>
+            </select>
+          </div>
+          <div class="col-sm-6">
+            {% csrf_token%}
+            <form method="post" enctype="multipart/form-data">
+            <label for="document">
+            <br><class="form-label">Upload Excel or CSV File:</label>
+            <input type="file" class="btn btn-light" name="document" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" required>
+            <br>
+            <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>   
+      </form>
+        {% if error %}
+          <b><p>{{ error }}</p></b>
+        {% endif %}
+        {% if url %}
+          <br><a href="{{ plot_url }}" download="{{ plot_url }}">Download Graph</a>
+          <img src="{{ plot_url }}" alt="plot" style="width:775px;height:450px;">
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body
+</html>
