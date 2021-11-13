@@ -29,7 +29,7 @@ DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 
 ALLOWED_HOSTS = [
     'ptolemy-website.herokuapp.com',
-    'ptolemy.tech'
+    'ptolemy.tech',
                  
                  
 ]
