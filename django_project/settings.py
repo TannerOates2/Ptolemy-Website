@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 ##SECRET_KEY = 'django-insecure-03j2iul&$g7r9g520q=nkl7z1j-^(#%q!j*q4mz83x_(p8_f^w'
 SECRET_KEY = os.environ.get('PTOLEMY_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 
 ALLOWED_HOSTS = ['ptolemy-website.herokuapp.com']
 
