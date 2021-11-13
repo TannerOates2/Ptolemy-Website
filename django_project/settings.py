@@ -27,7 +27,12 @@ SECRET_KEY = os.environ.get('PTOLEMY_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 
-ALLOWED_HOSTS = ['ptolemy-website.herokuapp.com']
+ALLOWED_HOSTS = [
+    'ptolemy-website.herokuapp.com',
+    'ptolemy.tech'
+                 
+                 
+]
 
 
 # Application definition
